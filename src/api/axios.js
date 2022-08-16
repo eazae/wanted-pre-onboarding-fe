@@ -5,9 +5,10 @@ const instance = axios.create({
   headers: {
     'Content-type': 'application/json',
     'Access-Control-Allow-Credentials': true,
+    // 'Access-Control-Allow-Origin': '*',
   },
 });
-
+instance.defaults.withCredentials = true;
 /* Apply Interceptor */
 // HTTP request interceptor
 instance.interceptors.request.use(

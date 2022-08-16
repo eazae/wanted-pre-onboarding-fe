@@ -1,13 +1,16 @@
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router';
+// import { LoginForm, SignupForm } from './components/Main';
 import { MainPage, TodoPage } from './pages';
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<MainPage />} />
+        <Route path="/signup" element={<MainPage />} />
         <Route path="/todo" element={<TodoPage />} />
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
