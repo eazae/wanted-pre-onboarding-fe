@@ -6,11 +6,11 @@ export const TodoPage = () => {
 
   const checkTokenExists = () => {
     const token = localStorage.getItem('access_token');
-    return token !== undefined;
+    return token !== null;
   };
 
   useEffect(() => {
-    if (checkTokenExists()) navigate('/', { replace: true });
+    if (!checkTokenExists()) navigate('/', { replace: true });
   }, []);
 
   return (

@@ -6,10 +6,10 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<MainPage />} />
         <Route path="/signup" element={<MainPage />} />
         <Route path="/todo" element={<TodoPage />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

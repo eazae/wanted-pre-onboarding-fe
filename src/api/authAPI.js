@@ -10,6 +10,5 @@ export const signUp = async (email, password) => {
 
 export const signIn = async (email, password) => {
   const response = await instance.post(COMMON + '/signin', { email, password });
-
   return response;
 };

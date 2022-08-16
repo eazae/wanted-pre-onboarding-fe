@@ -13,8 +13,13 @@ export const LoginForm = () => {
 
   const login = async (email, password) => {
     const response = await signIn(email, password);
-    alert(response);
-    // if(response.status === 200)
+    // console.log(response);
+    if (response.status === 200) {
+      localStorage.setItem('access_token', response.data.access_token);
+      navigate('/todo');
+    } else {
+      alert(response.data.message);
+    }
   };
 
   useEffect(() => {
@@ -28,6 +33,7 @@ export const LoginForm = () => {
   return (
     <>
       <Title>로그인</Title>
+      {/* <form> */}
       <Input placeholder="이메일" value={email} onChange={(e) => setEmail(e.target.value)} />
       <Input
         placeholder="비밀번호"
@@ -35,9 +41,15 @@ export const LoginForm = () => {
         type="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Button onClick={() => login(email, password)} disabled={!validEmail || !validPassword}>
+      <Button
+        // type="button"
+        onClick={() => login(email, password)}
+        disabled={!validEmail || !validPassword}
+      >
         로그인
       </Button>
+      {/* </form> */}
+
       <TextButton onClick={() => navigate('/signup', { replace: true })}>회원가입하기 </TextButton>
     </>
   );

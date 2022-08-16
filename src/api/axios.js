@@ -5,10 +5,9 @@ const instance = axios.create({
   headers: {
     'Content-type': 'application/json',
     'Access-Control-Allow-Credentials': true,
-    // 'Access-Control-Allow-Origin': '*',
   },
 });
-instance.defaults.withCredentials = true;
+
 /* Apply Interceptor */
 // HTTP request interceptor
 instance.interceptors.request.use(
@@ -22,6 +21,11 @@ instance.interceptors.request.use(
   (err) => {
     return Promise.reject(err);
   }
+);
+
+instance.interceptors.response.use(
+  (response) => response,
+  (err) => Promise.resolve(err.response)
 );
 
 export default instance;

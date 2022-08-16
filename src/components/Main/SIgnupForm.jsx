@@ -5,6 +5,7 @@ import { Button, Input, TextButton, Title } from '../../commons';
 
 export const SignupForm = () => {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validEmail, setValidEmail] = useState(false);
@@ -12,8 +13,13 @@ export const SignupForm = () => {
 
   const join = async (email, password) => {
     const response = await signUp(email, password);
-    alert(response);
-    // if(response.status === 200)
+    // console.log(response);
+    if (response.status === 200) {
+      localStorage.setItem('access_token', response.data.access_token);
+      navigate('/todo');
+    } else {
+      alert(response.data.message);
+    }
   };
 
   useEffect(() => {
