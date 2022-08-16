@@ -73,6 +73,7 @@ export const TodoListItem = ({ item, refreshList }) => {
               placeholder={placeholer}
               value={content}
               onChange={(e) => setContent(e.target.value)}
+              onClick={(e) => e.stopPropagation()}
             />
           ) : (
             <Content>{content}</Content>
