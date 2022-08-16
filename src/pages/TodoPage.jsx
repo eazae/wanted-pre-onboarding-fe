@@ -1,14 +1,11 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { checkTokenExists } from '../utils/utils';
 
 export const TodoPage = () => {
   let navigate = useNavigate();
 
-  const checkTokenExists = () => {
-    const token = localStorage.getItem('access_token');
-    return token !== null;
-  };
-
+  // Assignment1
   useEffect(() => {
     if (!checkTokenExists()) navigate('/', { replace: true });
   }, []);
