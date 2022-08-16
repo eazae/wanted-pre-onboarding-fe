@@ -21,7 +21,7 @@ export const updateTodo = async (id, todo, isCompleted) => {
 };
 
 export const deleteTodo = async (id) => {
-  const response = await instance.delete(COMMON + `${id}`);
+  const response = await instance.delete(COMMON + `/${id}`);
 
   return response;
 };

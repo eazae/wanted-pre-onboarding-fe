@@ -6,5 +6,5 @@ export const Input = styled.input`
   border-color: black;
   padding: 10px;
   display: inline;
-  margin-bottom: 5px;
+  width: 100%;
 `;

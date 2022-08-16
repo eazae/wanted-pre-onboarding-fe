@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { LoginForm, SignupForm } from '../components/Main';
+import { checkTokenExists } from '../utils/utils';
+
+const Container = styled.div`
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const MainPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -8,11 +16,6 @@ export const MainPage = () => {
   const navigate = useNavigate();
 
   // Assignment3
-  const checkTokenExists = () => {
-    const token = localStorage.getItem('access_token');
-    return token !== null;
-  };
-
   useEffect(() => {
     if (checkTokenExists()) navigate('/todo', { replace: true });
   }, []);
@@ -21,5 +24,9 @@ export const MainPage = () => {
     setIsLogin(location.pathname === '/login');
   }, [location.pathname]);
 
-  return <>{isLogin ? <LoginForm /> : <SignupForm />}</>;
+  return (
+    <>
+      <Container>{isLogin ? <LoginForm /> : <SignupForm />}</Container>
+    </>
+  );
 };
